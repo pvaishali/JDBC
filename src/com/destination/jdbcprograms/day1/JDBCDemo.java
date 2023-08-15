@@ -2,14 +2,16 @@ package com.destination.jdbcprograms.day1;
 import java.sql.*;
 public class JDBCDemo {
 	public static void main(String[] args) throws Exception {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		System.out.println("Driver loaded");
 		batchdemo();
-	}	
 	
+	}
 	//simple read from db and display results
 	public static void readRecords() throws Exception{
 		String url = "jdbc:mysql://localhost:3306/jdbcdemo";
 		String userName = "root";
-		String passWord = "Test";
+		String passWord = "vaishulatchu123";
 		String query = "select * from employee";
 
 		
@@ -30,7 +32,7 @@ public class JDBCDemo {
 	public static void insertRecord() throws Exception{
 		String url = "jdbc:mysql://localhost:3306/jdbcdemo";
 		String userName = "root";
-		String passWord = "Test";
+		String passWord = "vaishulatchu123";
 		String query = "insert into employee values (4,'priya',250000)";
 
 		
@@ -46,7 +48,7 @@ public class JDBCDemo {
 	public static void insertVar() throws Exception{
 		String url = "jdbc:mysql://localhost:3306/jdbcdemo";
 		String userName = "root";
-		String passWord = "Test";
+		String passWord = "vaishulatchu123";
 		
 		int id=5;
 		String name = "Varun";
@@ -68,7 +70,7 @@ public class JDBCDemo {
 	public static void insertUsingPst() throws Exception{
 		String url = "jdbc:mysql://localhost:3306/jdbcdemo";
 		String userName = "root";
-		String passWord = "Test";
+		String passWord = "vaishulatchu123";
 		
 		int id=6;
 		String name = "Nila";
@@ -95,11 +97,11 @@ public class JDBCDemo {
 	public static void delete() throws Exception{
 		String url = "jdbc:mysql://localhost:3306/jdbcdemo";
 		String userName = "root";
-		String passWord = "Test";
+		String passWord = "vaishulatchu123";
 		
 		int id=5;
 
-		String query = "delete from employee where emp_id = " + id;
+		String query = "delete from employee where Id = " + id;
 
 		
 		Connection con = DriverManager.getConnection(url,userName,passWord);
@@ -114,10 +116,10 @@ public class JDBCDemo {
 	public static void update() throws Exception{
 		String url = "jdbc:mysql://localhost:3306/jdbcdemo";
 		String userName = "root";
-		String passWord = "Test";
+		String passWord = "vaishulatchu123";
 		
 
-		String query = "update employee set salary = 150000 where emp_id=1";
+		String query = "update employee set salary = 150000 where Id=1";
 
 		
 		Connection con = DriverManager.getConnection(url,userName,passWord);
@@ -137,7 +139,7 @@ public class JDBCDemo {
 	public static void sp() throws Exception{
 		String url = "jdbc:mysql://localhost:3306/jdbcdemo";
 		String userName = "root";
-		String passWord = "Test";
+		String passWord = "vaishulatchu123";
 
 		Connection con = DriverManager.getConnection(url,userName,passWord);
 		CallableStatement cst = con.prepareCall("{call GetEmp()}");
@@ -156,10 +158,10 @@ public class JDBCDemo {
 	public static void sp2() throws Exception{
 		String url = "jdbc:mysql://localhost:3306/jdbcdemo";
 		String userName = "root";
-		String passWord = "Test";
+		String passWord = "vaishulatchu123";
 		int id = 3;
 		Connection con = DriverManager.getConnection(url,userName,passWord);
-		CallableStatement cst = con.prepareCall("{call GetEmpById(?)}");
+		CallableStatement cst = con.prepareCall("{call GetById(?)}");
 		cst.setInt(1, id);
 		ResultSet rs = cst.executeQuery();
 		
@@ -176,7 +178,7 @@ public class JDBCDemo {
 	public static void sp3() throws Exception{
 		String url = "jdbc:mysql://localhost:3306/jdbcdemo";
 		String userName = "root";
-		String passWord = "Test";
+		String passWord = "vaishulatchu123";
 		int id = 3;
 		Connection con = DriverManager.getConnection(url,userName,passWord);
 		CallableStatement cst = con.prepareCall("{call GetNameById(?,?)}");
@@ -194,7 +196,7 @@ public class JDBCDemo {
 	public static void commitdemo() throws Exception{
 		String url = "jdbc:mysql://localhost:3306/jdbcdemo";
 		String userName = "root";
-		String passWord = "Test";
+		String passWord = "vaishulatchu123";
 
 		String query1 = "update employee set salary = 550000 where emp_id=1";
 		String query2 = "update employee set salary = 550000 where emp_id=2";
@@ -220,7 +222,7 @@ public class JDBCDemo {
 	public static void batchdemo() throws Exception{
 		String url = "jdbc:mysql://localhost:3306/jdbcdemo";
 		String userName = "root";
-		String passWord = "Test";
+		String passWord = "vaishulatchu123";
 
 		String query1 = "update employee set salary = 300000 where emp_id=1";
 		String query2 = "update employee set salary = 300000 where emp_id=2";
